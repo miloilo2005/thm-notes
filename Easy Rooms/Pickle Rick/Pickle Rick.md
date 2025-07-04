@@ -19,7 +19,8 @@ As we can see, there is a login.php page:
 and a robots.txt page:
 <img src="img/PR4.png" alt="Pickle Rick" width="500"/>
 
-<span style="color:blue;"><i>BT Notes: To limit Nmap enumeration, </i></span>
+*BT Notes: To limit Nmap enumeration on an Apache web server (whcih the one that the site uses), programmers should disable directory listing through the .htaccess root file ([source](https://serverfault.com/questions/283758/how-can-i-prevent-people-from-looking-at-a-listing-of-files-in-parent-directory)). Additionally, they should implement a Web Application Firewall (WAF) such as ModSecurity and Cloudflare, as it can filter common HTTP-enum patterns ([source](([source](https://serverfault.com/questions/283758/how-can-i-prevent-people-from-looking-at-a-listing-of-files-in-parent-directory))))
+)*
 
 2. The robots.txt page seems to contain the password. To find the username, we view the page source code with the shortcut Ctrl + U:
 4. 
