@@ -9,12 +9,19 @@ Room Link: https://tryhackme.com/room/picklerick
 
 
 # Steps to Hack & Notes for Blue Team
-1. Looking the IP adress will direct us to this site
-   
-2. Scan the port using Nmap, using http-enum NSE script to enumerate directories used by web servers.
+1. Scan the port using Nmap, using http-enum NSE script to enumerate directories used by web servers.
 ```bash
 nmap -sV -p 80,443 --script http-enum 10.10.231.214
 ```
+<img src="img/PR1.png" alt="Pickle Rick" width="500"/>
+As we can see, there is a login.php page:
+<img src="img/PR3.png" alt="Pickle Rick" width="500"/>
+and a robots.txt page:
+<img src="img/PR4.png" alt="Pickle Rick" width="500"/>
+
+<span style="color:blue;"><i>BT Notes: To limit Nmap enumeration, </i></span>
+
+2. The robots.txt page seems to contain the password. To find the username, we view the page source code with the shortcut Ctrl + U:
 4. 
 
 3. 
