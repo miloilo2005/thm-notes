@@ -43,7 +43,8 @@ Room Link: https://tryhackme.com/room/picklerick
   ```bash
   grep -r '' .
   ```
-  <img src="img/PR9.png" alt="Pickle Rick" width="500"/>
+  <img src="img/PR10.png" alt="Pickle Rick" width="500"/>
 8. We scrolled down and see that the first ingredient is displayed. The clue.txt is also displayed, which tells us to explore the file system:  
+   <img src="img/PR11.png" alt="Pickle Rick" width="500"/>
 
 # Final Reflection
