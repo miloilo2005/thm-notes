@@ -21,8 +21,7 @@ Room Link: https://tryhackme.com/room/picklerick
   and a robots.txt page:
   <img src="img/PR4.png" alt="Pickle Rick" width="500"/>
 
-*BT Notes: To limit Nmap enumeration on an Apache web server (which the one that the site uses), programmers should disable directory listing through the .htaccess root file ([source](https://serverfault.com/questions/283758/how-can-i-prevent-people-from-looking-at-a-listing-of-files-in-parent-directory)). Additionally, they should implement a Web Application Firewall (WAF) such as ModSecurity and Cloudflare, as it can filter common HTTP-enum patterns ([source](([source](https://serverfault.com/questions/283758/how-can-i-prevent-people-from-looking-at-a-listing-of-files-in-parent-directory)))).
-)*
+*BT Notes: To limit Nmap enumeration on an Apache web server (which the one that the site uses), programmers should disable directory listing through the .htaccess root file ([source](https://serverfault.com/questions/283758/how-can-i-prevent-people-from-looking-at-a-listing-of-files-in-parent-directory)). Additionally, they should implement a Web Application Firewall (WAF) such as ModSecurity and Cloudflare, as it can filter common HTTP-enum patterns ([source](https://serverfault.com/questions/283758/how-can-i-prevent-people-from-looking-at-a-listing-of-files-in-parent-directory)).*
 
 3. The robots.txt page seems to contain the password. To find the username, we view the page source code of the home page with the shortcut Ctrl + U:
   <img src="img/PR5.png" alt="Pickle Rick" width="500"/>
@@ -46,5 +45,10 @@ Room Link: https://tryhackme.com/room/picklerick
   <img src="img/PR10.png" alt="Pickle Rick" width="500"/>
 8. We scrolled down and see that the first ingredient is displayed. The clue.txt is also displayed, which tells us to explore the file system:  
    <img src="img/PR11.png" alt="Pickle Rick" width="500"/>
+
+*BT Notes: There are various prevention methods for a Command Injection interface to make it harder for users to enumerate the system. For example, we can sanitize the user input, whitelisting safe commands ([source](https://snyk.io/blog/command-injection-python-prevention-examples/)). Additionally, we can also remove read and write permissions on important files within the Ubuntu system using the "chmod" command ([source](https://askubuntu.com/questions/1129479/removing-read-access-from-a-file)).*
+
+9. We looked around the file system by backing away from the current directory, until we reached the top-level directory:
+    <img src="img/PR12.png" alt="Pickle Rick" width="500"/>
 
 # Final Reflection
