@@ -9,21 +9,41 @@ Room Link: https://tryhackme.com/room/picklerick
 
 
 # Steps to Hack & Notes for Blue Team
-1. Scan the port using Nmap, using http-enum NSE script to enumerate directories used by web servers.
-```bash
-nmap -sV -p 80,443 --script http-enum 10.10.231.214
-```
-<img src="img/PR1.png" alt="Pickle Rick" width="500"/>
-As we can see, there is a login.php page:
-<img src="img/PR3.png" alt="Pickle Rick" width="500"/>
-and a robots.txt page:
-<img src="img/PR4.png" alt="Pickle Rick" width="500"/>
+1. Opeing the homepage, we can see that we need to find the three missing ingredients:
+   
+2. Scan the port using Nmap, using http-enum NSE script to enumerate directories used by web servers.
+  ```bash
+  nmap -sV -p 80,443 --script http-enum 10.10.231.214
+  ```
+  <img src="img/PR1.png" alt="Pickle Rick" width="500"/>
+  As we can see, there is a login.php page:
+  <img src="img/PR3.png" alt="Pickle Rick" width="500"/>
+  and a robots.txt page:
+  <img src="img/PR4.png" alt="Pickle Rick" width="500"/>
 
-*BT Notes: To limit Nmap enumeration on an Apache web server (whcih the one that the site uses), programmers should disable directory listing through the .htaccess root file ([source](https://serverfault.com/questions/283758/how-can-i-prevent-people-from-looking-at-a-listing-of-files-in-parent-directory)). Additionally, they should implement a Web Application Firewall (WAF) such as ModSecurity and Cloudflare, as it can filter common HTTP-enum patterns ([source](([source](https://serverfault.com/questions/283758/how-can-i-prevent-people-from-looking-at-a-listing-of-files-in-parent-directory))))
+*BT Notes: To limit Nmap enumeration on an Apache web server (which the one that the site uses), programmers should disable directory listing through the .htaccess root file ([source](https://serverfault.com/questions/283758/how-can-i-prevent-people-from-looking-at-a-listing-of-files-in-parent-directory)). Additionally, they should implement a Web Application Firewall (WAF) such as ModSecurity and Cloudflare, as it can filter common HTTP-enum patterns ([source](([source](https://serverfault.com/questions/283758/how-can-i-prevent-people-from-looking-at-a-listing-of-files-in-parent-directory)))).
 )*
 
-2. The robots.txt page seems to contain the password. To find the username, we view the page source code with the shortcut Ctrl + U:
-4. 
+3. The robots.txt page seems to contain the password. To find the username, we view the page source code of the home page with the shortcut Ctrl + U:
+  <img src="img/PR5.png" alt="Pickle Rick" width="500"/>
 
-3. 
+4. After entering the username and the password, we are directed to a portal page, which seems to be a Command Injection interface:
+  <img src="img/PR6.png" alt="Pickle Rick" width="500"/>
+  All the tabs seem to be all be inaccessible:
+  <img src="img/PR7.png" alt="Pickle Rick" width="500"/>
+
+5. Using the command box, we can view all the files in the current directory:
+  <img src="img/PR8.png" alt="Pickle Rick" width="500"/>
+
+6. There is a very interestingly named text file, which seems to contain the first ingredient, and also clue.txt file. We tried to open the files with cat:
+  <img src="img/PR9.png" alt="Pickle Rick" width="500"/>
+  However, it seems like the site blocks common displaying commands.
+
+7. We tried using grep, which is a command-line utility for searching plaintext datasets for lines that match a regular expression, but by leaving the        regular expressions empty and including the -r (recursive) option, we can display everything in every file within the current directory. Luckily, this utility is not blocked:
+  ```bash
+  grep -r '' .
+  ```
+  <img src="img/PR9.png" alt="Pickle Rick" width="500"/>
+8. We scrolled down and see that the first ingredient is displayed. The clue.txt is also displayed, which tells us to explore the file system:  
+
 # Final Reflection
