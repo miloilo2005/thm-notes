@@ -38,7 +38,7 @@ Room Link: https://tryhackme.com/room/picklerick
   <img src="img/PR9.png" alt="Pickle Rick" width="500"/>
   However, it seems like the site blocks common displaying commands.
 
-7. We tried using grep, which is a command-line utility for searching plaintext datasets for lines that match a regular expression, but by leaving the        regular expressions empty and including the -r (recursive) option, we can display everything in every file within the current directory. Luckily, this utility is not blocked:
+7. We tried using grep, which is a command-line utility for searching plaintext datasets for lines that match a regular expression, but by leaving the           regular expressions empty and including the -r (recursive) option, we can display everything in every file within the current directory. Luckily, this utility is not blocked:
   ```bash
   grep -r '' .
   ```
@@ -50,5 +50,15 @@ Room Link: https://tryhackme.com/room/picklerick
 
 9. We looked around the file system by backing away from the current directory, until we reached the top-level directory:
     <img src="img/PR12.png" alt="Pickle Rick" width="500"/>
+
+10. We tried looking for a .txt file in the whole directory to find any suspicious , but there were too many files to sort through, and none of them were interesting:
+
+    <img src="img/PR13.png" alt="Pickle Rick" width="500"/>
+
+12. So we to find the second ingredient using the brute-force technique, using the find command:
+    ```bash
+     find ../../.. -type f \( -iname "*second*" -o -iname "*ingredient*" -o -iname "*2nd*" \)
+     ```
+    <img src="img/PR14.png" alt="Pickle Rick" width="500"/>
 
 # Final Reflection
