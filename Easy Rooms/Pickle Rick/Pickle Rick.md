@@ -10,6 +10,7 @@ Room Link: https://tryhackme.com/room/picklerick
 
 # Steps to Hack & Notes for Blue Team
 1. Opening the homepage, we can see that we need to find the three missing ingredients:
+   <img src="img/PR0.png" alt="Pickle Rick" width="500"/>
    
 2. Scan the port using Nmap, using `http-enum` NSE script to enumerate directories used by web servers.
   ```bash
